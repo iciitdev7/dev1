@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Brain, Target, TrendingUp, X, ChevronLeft, ChevronRight, Chrome as Home } from 'lucide-react';
 import { useLanguage } from '../../contexts/LanguageContext';
+import LanguageToggle from '../../components/LanguageToggle';
 
 export default function DemoPage() {
   const router = useRouter();
@@ -17,38 +18,38 @@ export default function DemoPage() {
 
   const demoSteps = [
     {
-      title: 'Welcome to the Demo Tour',
-      description: 'Experience how our app helps sales professionals build mental resilience through interactive drills and personalized training.',
+      title: t('welcomeToDemo'),
+      description: t('experienceHow'),
       component: 'welcome',
       highlight: null,
     },
     {
-      title: 'Initial Assessment',
-      description: 'Start with a quick assessment to identify your current skill levels across key competencies like emotional regulation, confidence, and cognitive flexibility.',
+      title: t('initialAssessment'),
+      description: t('startWithQuick'),
       component: 'assessment',
       highlight: 'assessment',
     },
     {
-      title: 'Personalized Dashboard',
-      description: 'Your dashboard shows recommended skills to work on based on your assessment results, with priority levels to guide your focus.',
+      title: t('personalizedDashboard'),
+      description: t('yourDashboardShows'),
       component: 'dashboard',
       highlight: 'dashboard',
     },
     {
-      title: 'Interactive Drills',
-      description: 'Practice with engaging exercises like ABC Cards for emotional regulation, breathing timers, and role-play scenarios tailored to sales situations.',
+      title: t('interactiveDrills'),
+      description: t('practiceWithEngaging'),
       component: 'drills',
       highlight: 'drills',
     },
     {
-      title: 'Progress Tracking',
-      description: 'Track your improvement over time with detailed metrics, streak tracking, and visualizations of your skill development journey.',
+      title: t('progressTracking'),
+      description: t('trackYourImprovement'),
       component: 'progress',
       highlight: 'progress',
     },
     {
-      title: 'Ready to Start?',
-      description: 'Sign up now to begin your journey toward greater mental resilience and sales success.',
+      title: t('readyToStart'),
+      description: t('signUpNowToBegin'),
       component: 'cta',
       highlight: null,
     },
@@ -105,16 +106,16 @@ export default function DemoPage() {
           <div className="py-8">
             <Card className="max-w-2xl mx-auto shadow-lg">
               <CardHeader>
-                <CardTitle className="text-2xl">Sample Assessment Question</CardTitle>
-                <CardDescription>Rate your current ability in this area</CardDescription>
+                <CardTitle className="text-2xl">{t('sampleAssessmentQuestion')}</CardTitle>
+                <CardDescription>{t('rateYourCurrent')}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="p-6 bg-blue-50 rounded-lg">
                   <p className="text-lg font-medium mb-4">
-                    How confident are you in managing your emotions during high-pressure sales calls?
+                    {t('howConfidentAre')}
                   </p>
                   <div className="space-y-3">
-                    {['Very Confident', 'Confident', 'Neutral', 'Not Confident', 'Not at All Confident'].map((option, idx) => (
+                    {[t('veryConfident'), t('confident'), t('neutral'), t('notConfident'), t('notAtAllConfident')].map((option, idx) => (
                       <div key={idx} className="p-3 bg-white rounded-lg border-2 border-gray-200 hover:border-[#6495ED] transition-colors cursor-pointer">
                         {option}
                       </div>
@@ -122,7 +123,7 @@ export default function DemoPage() {
                   </div>
                 </div>
                 <p className="text-sm text-gray-500 text-center">
-                  This is a preview. Complete the full assessment after signing up.
+                  {t('thisIsPreview')}
                 </p>
               </CardContent>
             </Card>
@@ -136,15 +137,15 @@ export default function DemoPage() {
               <div className="grid md:grid-cols-3 gap-4">
                 <Card className="shadow-lg">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-sm text-gray-600">Current Streak</CardTitle>
+                    <CardTitle className="text-sm text-gray-600">{t('currentStreak')}</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-3xl font-bold text-[#6495ED]">7 days</div>
+                    <div className="text-3xl font-bold text-[#6495ED]">7 {t('consecutiveDays')}</div>
                   </CardContent>
                 </Card>
                 <Card className="shadow-lg">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-sm text-gray-600">Skills in Progress</CardTitle>
+                    <CardTitle className="text-sm text-gray-600">{t('skillsInProgress')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-3xl font-bold text-[#6495ED]">5</div>
@@ -152,7 +153,7 @@ export default function DemoPage() {
                 </Card>
                 <Card className="shadow-lg">
                   <CardHeader className="pb-3">
-                    <CardTitle className="text-sm text-gray-600">Drills Completed</CardTitle>
+                    <CardTitle className="text-sm text-gray-600">{t('drillsCompleted')}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-3xl font-bold text-[#6495ED]">24</div>
@@ -161,20 +162,20 @@ export default function DemoPage() {
               </div>
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle>Recommended Skills</CardTitle>
-                  <CardDescription>Based on your assessment results</CardDescription>
+                  <CardTitle>{t('recommendedSkills')}</CardTitle>
+                  <CardDescription>{t('basedOnYourAssessment')}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   {[
-                    { name: 'Emotional Regulation', priority: 'High', progress: 35 },
-                    { name: 'Confidence Building', priority: 'High', progress: 20 },
-                    { name: 'Cognitive Flexibility', priority: 'Medium', progress: 45 },
+                    { name: t('emotionalRegulation'), priority: t('highPriority'), progress: 35 },
+                    { name: t('confidenceBuilding'), priority: t('highPriority'), progress: 20 },
+                    { name: t('cognitiveFlexibility'), priority: t('mediumPriority'), progress: 45 },
                   ].map((skill, idx) => (
                     <div key={idx} className="p-4 bg-gray-50 rounded-lg">
                       <div className="flex justify-between items-center mb-2">
                         <span className="font-medium">{skill.name}</span>
-                        <Badge variant={skill.priority === 'High' ? 'destructive' : 'secondary'}>
-                          {skill.priority} Priority
+                        <Badge variant={skill.priority === t('highPriority') ? 'destructive' : 'secondary'}>
+                          {skill.priority}
                         </Badge>
                       </div>
                       <Progress value={skill.progress} className="h-2" />
@@ -197,38 +198,38 @@ export default function DemoPage() {
                       <Target className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">ABC Card Exercise</CardTitle>
-                      <CardDescription>Emotional Regulation Drill</CardDescription>
+                      <CardTitle className="text-2xl">{t('abcCardExercise')}</CardTitle>
+                      <CardDescription>{t('emotionalRegulationDrill')}</CardDescription>
                     </div>
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="p-6 bg-blue-50 rounded-lg">
-                    <p className="font-medium mb-3">Scenario:</p>
+                    <p className="font-medium mb-3">{t('scenario')}:</p>
                     <p className="text-gray-700 mb-4">
-                      A potential client just told you they're going with a competitor despite weeks of effort on your part.
+                      {t('potentialClient')}
                     </p>
                     <div className="space-y-4">
                       <div>
-                        <p className="font-medium text-sm text-gray-600 mb-1">A - Activating Event</p>
+                        <p className="font-medium text-sm text-gray-600 mb-1">{t('activatingEvent')}</p>
                         <div className="p-3 bg-white rounded border-2 border-gray-200">
-                          Lost a major deal to competitor
+                          {t('lostMajorDeal')}
                         </div>
                       </div>
                       <div>
-                        <p className="font-medium text-sm text-gray-600 mb-1">B - Belief (What you tell yourself)</p>
+                        <p className="font-medium text-sm text-gray-600 mb-1">{t('beliefWhatYou')}</p>
                         <input
                           type="text"
-                          placeholder="Type your automatic thought..."
+                          placeholder={t('typeYourAutomatic')}
                           className="w-full p-3 bg-white rounded border-2 border-[#6495ED] focus:outline-none"
                           disabled
                         />
                       </div>
                       <div>
-                        <p className="font-medium text-sm text-gray-600 mb-1">C - Consequence (Emotional response)</p>
+                        <p className="font-medium text-sm text-gray-600 mb-1">{t('consequenceEmotional')}</p>
                         <input
                           type="text"
-                          placeholder="How do you feel?"
+                          placeholder={t('howDoYouFeel')}
                           className="w-full p-3 bg-white rounded border-2 border-gray-200 focus:outline-none"
                           disabled
                         />
@@ -236,7 +237,7 @@ export default function DemoPage() {
                     </div>
                   </div>
                   <p className="text-sm text-gray-500 text-center">
-                    Try this and 30+ other interactive drills after signing up.
+                    {t('tryThisAnd')}
                   </p>
                 </CardContent>
               </Card>
@@ -252,15 +253,15 @@ export default function DemoPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <TrendingUp className="h-5 w-5 text-[#6495ED]" />
-                    Skill Improvement Over Time
+                    {t('skillImprovementOver')}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     {[
-                      { skill: 'Emotional Regulation', before: 3, after: 7, change: '+133%' },
-                      { skill: 'Confidence Building', before: 4, after: 8, change: '+100%' },
-                      { skill: 'Resilience', before: 5, after: 8, change: '+60%' },
+                      { skill: t('emotionalRegulation'), before: 3, after: 7, change: '+133%' },
+                      { skill: t('confidenceBuilding'), before: 4, after: 8, change: '+100%' },
+                      { skill: t('emotionalResilience'), before: 5, after: 8, change: '+60%' },
                     ].map((item, idx) => (
                       <div key={idx} className="space-y-2">
                         <div className="flex justify-between items-center">
@@ -269,11 +270,11 @@ export default function DemoPage() {
                         </div>
                         <div className="flex items-center gap-4">
                           <div className="flex-1">
-                            <div className="text-xs text-gray-500 mb-1">Before</div>
+                            <div className="text-xs text-gray-500 mb-1">{t('before')}</div>
                             <Progress value={item.before * 10} className="h-2" />
                           </div>
                           <div className="flex-1">
-                            <div className="text-xs text-gray-500 mb-1">After</div>
+                            <div className="text-xs text-gray-500 mb-1">{t('after')}</div>
                             <Progress value={item.after * 10} className="h-2 bg-gray-200 [&>div]:bg-green-500" />
                           </div>
                         </div>
@@ -284,7 +285,7 @@ export default function DemoPage() {
               </Card>
               <Card className="shadow-lg">
                 <CardHeader>
-                  <CardTitle>Weekly Activity</CardTitle>
+                  <CardTitle>{t('weeklyActivity')}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex justify-between items-end h-32 gap-2">
@@ -295,7 +296,7 @@ export default function DemoPage() {
                           style={{ height: `${height}%` }}
                         />
                         <span className="text-xs text-gray-500 mt-2">
-                          {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][idx]}
+                          {[t('mon'), t('tue'), t('wed'), t('thu'), t('fri'), t('sat'), t('sun')][idx]}
                         </span>
                       </div>
                     ))}
@@ -310,9 +311,9 @@ export default function DemoPage() {
         return (
           <div className="text-center py-12">
             <Brain className="h-20 w-20 text-[#6495ED] mx-auto mb-6" />
-            <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Sales Performance?</h2>
+            <h2 className="text-4xl font-bold mb-4">{t('readyToTransform')}</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              Join and start building the mental resilience skills that will set you apart.
+              {t('joinAndStart')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
@@ -320,7 +321,7 @@ export default function DemoPage() {
                 onClick={() => router.push('/auth')}
                 className="bg-gradient-to-r from-[#6495ED] to-blue-600 hover:from-blue-600 hover:to-[#6495ED] text-white px-8 py-3 text-lg"
               >
-                Sign Up Free
+                {t('signUpFree')}
               </Button>
               <Button
                 size="lg"
@@ -328,7 +329,7 @@ export default function DemoPage() {
                 onClick={() => router.push('/')}
                 className="border-[#6495ED] text-[#6495ED] hover:bg-[#6495ED]/10 px-8 py-3 text-lg"
               >
-                Back to Home
+                {t('backToHome')}
               </Button>
             </div>
           </div>
@@ -355,22 +356,25 @@ export default function DemoPage() {
               </Button>
               <div className="flex items-center gap-2">
                 <Brain className="h-6 w-6 text-[#6495ED]" />
-                <span className="font-bold text-lg">Demo Tour</span>
+                <span className="font-bold text-lg">{t('demoTour')}</span>
               </div>
             </div>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleClose}
-              className="hover:bg-gray-100"
-            >
-              <X className="h-5 w-5" />
-            </Button>
+            <div className="flex items-center space-x-2">
+              <LanguageToggle />
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleClose}
+                className="hover:bg-gray-100"
+              >
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
           </div>
           <div className="mt-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-medium text-gray-600">
-                Step {currentStep + 1} of {demoSteps.length}
+                {t('stepOf', { current: currentStep + 1, total: demoSteps.length })}
               </span>
               <span className="text-sm text-gray-500">{currentStepData.title}</span>
             </div>
@@ -404,7 +408,7 @@ export default function DemoPage() {
               className="gap-2"
             >
               <ChevronLeft className="h-4 w-4" />
-              Previous
+              {t('previous')}
             </Button>
 
             <div className="flex gap-2">
@@ -431,7 +435,7 @@ export default function DemoPage() {
                 onClick={handleNext}
                 className="bg-gradient-to-r from-[#6495ED] to-blue-600 hover:from-blue-600 hover:to-[#6495ED] text-white gap-2"
               >
-                Next
+                {t('next')}
                 <ChevronRight className="h-4 w-4" />
               </Button>
             ) : (
@@ -439,7 +443,7 @@ export default function DemoPage() {
                 onClick={() => router.push('/auth')}
                 className="bg-gradient-to-r from-[#6495ED] to-blue-600 hover:from-blue-600 hover:to-[#6495ED] text-white"
               >
-                Get Started
+                {t('getStarted')}
               </Button>
             )}
           </div>
